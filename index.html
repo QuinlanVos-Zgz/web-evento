@@ -315,9 +315,38 @@
         padding-top: 0;
       }
     }
+  .cancel-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.95);
+      color: #d71920;
+      font-weight: 700;
+      text-align: center;
+      padding: 16px 20px;
+      font-size: 1.1rem;
+      z-index: 9999;
+      border-bottom: 2px solid #d71920;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transform: translateY(-100%);
+      transition: transform 0.4s ease;
+    }
+
+    .cancel-banner.show {
+      transform: translateY(0);
+    }
+
+    body {
+      margin-top: 70px; /* para que no tape todo */
+    }
+
   </style>
 </head>
 <body>
+  <div class="cancel-banner">
+    Lamentamos informar que el evento se ha cancelado por despedida de soltera de la chica más maravillosa del mundo :) sorpresa cielo!!!
+  </div>
   <div class="top-strip"></div>
 
   <header class="site-header" style="background:#d71920;">
@@ -567,5 +596,14 @@
   <footer>
     <div class="container">Ayuntamiento de Zaragoza · Portal de Museos</div>
   </footer>
+  <script>
+    // Mostrar banner tras 3 segundos
+    window.addEventListener('DOMContentLoaded', function () {
+      const banner = document.querySelector('.cancel-banner');
+      setTimeout(() => {
+        banner.classList.add('show');
+      }, 3000);
+    });
+  </script>
 </body>
 </html>
